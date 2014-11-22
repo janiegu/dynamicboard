@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/board.css" rel="stylesheet">
+  </head>
+  <body role="document">
     <script type="text/javascript">
       /* randomly generate aesthetically pleasing colors, inspired by http://blog.functionalfun.net/2008/07/random-pastel-colour-generator.html */
       function color(elem) {
@@ -23,30 +25,46 @@
         }
       }
 
-      function clear() {
+      function clearAll() {
         $("div.col-sm-1").each(function(i, elem) {
           $(elem).css('background-color', 'white');
         })
       }
+
+      function saveColors() {
+        var jsonData = {};
+        jsonData.tiles = [];
+        $("div.col-sm-1").each(function(i, elem) {
+          var tile = {
+            "id": i,
+            "color": $(elem).css('background-color')
+          }
+          jsonData.tiles.push(tile);
+        })
+      }
     </script>
-  </head>
-  <body role="document">
     <div class="container" role="main">
     <div class="jumbotron">
       <h1>Hey AltSchool!</h1>
       <p>
-        I'm Janie, an undergraduate at Princeton studying Operations Research and CS. Below is the solution to my coding challenge.
+        I'm Janie, an undergraduate at Princeton studying Operations Research and CS. I'm really excited about AltSchool's vision and products, and its potential to revolutionize the way education is taught today. 
       </p>
       <p><a href="http://www.janiegu.com" class="btn btn-primary btn-lg" role="button">Learn more about Janie »</a></p>
     </div>
     <div class="page-header">
       <h1>Coding Challenge</h1>
     </div>
-    <p>
-      <button type="button" class="btn btn-primary" onclick="clear()">Clear Board</button>
-    </p>
     <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+      <div class="col-sm-8"></div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-primary" onclick="clearAll()">Clear Board</button>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-success" onclick="saveColors()">Save Board</button>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -57,7 +75,7 @@
         <div class="col-sm-1" onclick="color(this)"></div>
       </div>
       <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -68,7 +86,7 @@
         <div class="col-sm-1" onclick="color(this)"></div>
       </div>
       <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -79,7 +97,7 @@
         <div class="col-sm-1" onclick="color(this)"></div>
       </div>
       <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -90,7 +108,7 @@
         <div class="col-sm-1" onclick="color(this)"></div>
       </div>
       <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -101,7 +119,7 @@
         <div class="col-sm-1" onclick="color(this)"></div>
       </div>
       <div class="row">
-        <div class="col-sm-2" id="buffer"></div>
+        <div class="col-sm-2 buffer"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
@@ -110,6 +128,9 @@
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
         <div class="col-sm-1" onclick="color(this)"></div>
+      </div>
+      <div class="row" id="bottomBuffer">
+        <p class="text-muted">Click tiles to change them to randomly generated colors! Click them again to reset to white. "Clear Board" resets all tiles to white.</p>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

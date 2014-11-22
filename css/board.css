@@ -1,10 +1,24 @@
 [class*="col-"] {
-	padding-top: 30px;
 	padding-bottom: 30px;
+}
+
+.col-sm-1 {
+	padding-top: 30px;
 	background-color: rgb(255,255,255);
 	border: 1px solid #cccccc;
 }
 
-#buffer {
+.buffer {
 	border: none;
+}
+
+#bottomBuffer {
+	margin-bottom: 70px;
+	margin-top: 30px;
+	margin-left: 15px;
+}
+
+/* adds padding above page */
+.container {
+	margin-top: 30px;
 }
