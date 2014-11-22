@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, Text, String, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
-from flask import Flask
 
 engine = create_engine('postgresql://janie:yolo@localhost/dynamicboard')
 db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
@@ -15,7 +14,7 @@ class Email(Base):
   id = Column(Integer)
   color = Column(Text)
 
-  def __init__(self, id=None, color=None)
+  def __init__(self, id=None, color=None):
   	self.id = id
   	self.color = color
 
